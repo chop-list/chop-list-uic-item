@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
@@ -10,43 +10,45 @@
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
 
     <script type="module" src="../chop-list-uic-item.js"></script>
-  </head>
-  <body>
+</head>
+<body>
 
-    <test-fixture id="BasicTestFixture">
-      <template>
+<test-fixture id="BasicTestFixture">
+    <template>
         <chop-list-uic-item></chop-list-uic-item>
-      </template>
-    </test-fixture>
+    </template>
+</test-fixture>
 
-    <test-fixture id="ChangedPropertyTestFixture">
-      <template>
-        <chop-list-uic-item prop1="new-prop1"></chop-list-uic-item>
-      </template>
-    </test-fixture>
+<test-fixture id="ChangedPropertyTestFixture">
+    <template>
+        <chop-list-uic-item description="Light Coke" image="resources/img/shopping-cart.svg"></chop-list-uic-item>
+    </template>
+</test-fixture>
 
-    <script type="module">
-      suite('chop-list-uic-item', () => {
+<script type="module">
+  suite('chop-list-uic-item', () => {
 
-        test('instantiating the element with default properties works', () => {
-          const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'chop-list-uic-item');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello chop-list-uic-item!');
-        });
+    test('instantiating the element with default properties works', () => {
+      const element = fixture('BasicTestFixture');
+      const elementShadowRoot = element.shadowRoot;
+      const image = elementShadowRoot.querySelector('iron-image');
+      const description = elementShadowRoot.querySelector('.description');
+      // assert.equal(image.attributes.src, '/resources/img/shopping-cart.svg');
+      assert.equal(description.innerHTML, 'chop-list-uic-item');
+    });
 
-        test('setting a property on the element works', () => {
-          // Create a test fixture
-          const element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
-        });
+    test('setting a property on the element works', () => {
+      // Create a test fixture
+      const element = fixture('ChangedPropertyTestFixture');
+      const elementShadowRoot = element.shadowRoot;
+      const image = elementShadowRoot.querySelector('iron-image');
+      const description = elementShadowRoot.querySelector('.description');
+      // assert.equal(image.getAttribute('src'), '/resources/img/shopping-cart.svg');
+      assert.equal(description.innerHTML, 'Light Coke');
+    });
 
-      });
-    </script>
+  });
+</script>
 
-  </body>
+</body>
 </html>
