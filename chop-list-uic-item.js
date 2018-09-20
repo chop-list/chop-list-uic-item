@@ -17,43 +17,32 @@ class ChopListUicItem extends PolymerElement {
         :host {
           display: block;
         }
-        table, th, td {
-            border: 1px solid gray;
-            border-collapse: collapse;
-            width: 100%;
+        .item {
+            font-family: "Helvetica Neue";
+            font-size: 2em;
+            color: darkslategrey;
+            cursor: pointer;
         }
-        .image {
-            width: 20%;
-        }
-        .description {
-            width: 80%;
-        }
-        .image iron-image {
-            align-content: center;
+        div.item[checked] {
+            text-decoration: line-through;
+            color: lightgrey;
         }
       </style>
-        <table class="table">
-            <tr>
-                <td class="image">
-                    <iron-image fade src="{{image}}"
-                </td>
-                <td class="description">{{description}}</td>
-            </tr>
-        </table>
+      <div class="item"  checked$="{{checked}}" on-click="toogleChecked"><slot></slot></div>
     `;
   }
 
   static get properties() {
     return {
-      description: {
-        type: String,
-        value: 'chop-list-uic-item',
-      },
-      image: {
-        type: String,
-        value: 'resources/img/shopping-cart.svg'
+      checked: {
+        type: Boolean,
+        default: false
       }
     };
+  }
+
+  toogleChecked() {
+    this.checked = !this.checked;
   }
 }
 

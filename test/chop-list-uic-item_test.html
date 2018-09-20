@@ -21,7 +21,7 @@
 
 <test-fixture id="ChangedPropertyTestFixture">
     <template>
-        <chop-list-uic-item description="Light Coke" image="resources/img/shopping-cart.svg"></chop-list-uic-item>
+        <chop-list-uic-item description="Light Coke" image="resources/img/shopping-cart.png"></chop-list-uic-item>
     </template>
 </test-fixture>
 
@@ -33,7 +33,7 @@
       const elementShadowRoot = element.shadowRoot;
       const image = elementShadowRoot.querySelector('iron-image');
       const description = elementShadowRoot.querySelector('.description');
-      // assert.equal(image.attributes.src, '/resources/img/shopping-cart.svg');
+      assert.isDefined(image.getAttribute('src'), '/resources/img/shopping-cart.png');
       assert.equal(description.innerHTML, 'chop-list-uic-item');
     });
 
