@@ -1,5 +1,5 @@
-import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import '@polymer/iron-image/iron-image.js';
+import { html, PolymerElement } from '@polymer/polymer/polymer-element';
+import '@polymer/iron-image/iron-image';
 
 
 /**
@@ -36,8 +36,8 @@ class ChopListUicItem extends PolymerElement {
     return {
       checked: {
         type: Boolean,
-        default: false
-      }
+        default: false,
+      },
     };
   }
 
