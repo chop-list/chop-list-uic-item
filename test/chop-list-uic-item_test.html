@@ -13,39 +13,37 @@
 </head>
 <body>
 
-<test-fixture id="BasicTestFixture">
+<test-fixture id="Basic">
     <template>
-        <chop-list-uic-item></chop-list-uic-item>
+        <chop-list-uic-item>Orange juice</chop-list-uic-item>
     </template>
 </test-fixture>
 
-<test-fixture id="ChangedPropertyTestFixture">
+<test-fixture id="CheckedItem">
     <template>
-        <chop-list-uic-item description="Light Coke" image="resources/img/shopping-cart.png"></chop-list-uic-item>
+        <chop-list-uic-item checked>Orange juice</chop-list-uic-item>
     </template>
 </test-fixture>
 
 <script type="module">
   suite('chop-list-uic-item', () => {
 
-    test('instantiating the element with default properties works', () => {
-      const element = fixture('BasicTestFixture');
-      const elementShadowRoot = element.shadowRoot;
-      const image = elementShadowRoot.querySelector('iron-image');
-      const description = elementShadowRoot.querySelector('.description');
-      assert.isDefined(image.getAttribute('src'), '/resources/img/shopping-cart.png');
-      assert.equal(description.innerHTML, 'chop-list-uic-item');
+    test('Basic test showing item description', () => {
+      const element = fixture('Basic');
+      assert.equal(element.textContent, 'Orange juice');
     });
 
-    test('setting a property on the element works', () => {
-      // Create a test fixture
-      const element = fixture('ChangedPropertyTestFixture');
-      const elementShadowRoot = element.shadowRoot;
-      const image = elementShadowRoot.querySelector('iron-image');
-      const description = elementShadowRoot.querySelector('.description');
-      // assert.equal(image.getAttribute('src'), '/resources/img/shopping-cart.svg');
-      assert.equal(description.innerHTML, 'Light Coke');
-    });
+    test('Click for check', () => {
+      const element = fixture('Basic');
+      element.click();
+      assert(element.checked, "chop-list-uic-item not checked");
+    })
+
+    test('Click for uncheck', () => {
+      const element = fixture('CheckedItem');
+      element.click();
+      assert(!element.checked, "chop-list-uic-item not unchecked");
+    })
 
   });
 </script>

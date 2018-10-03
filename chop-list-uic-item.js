@@ -40,6 +40,10 @@ class ChopListUicItem extends PolymerElement {
       },
     };
   }
+  ready () {
+    super.ready();
+    this.addEventListener('click', this.toogleChecked);
+  }
 
   toogleChecked() {
     this.checked = !this.checked;

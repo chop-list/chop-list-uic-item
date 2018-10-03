@@ -2,6 +2,10 @@
   "name": "chop-list-uic-item",
   "description": "UI component for presenting a list item",
   "main": "chop-list-uic-item.js",
+  "scripts": {
+    "test": "polymer test",
+    "serve": "polymer serve"
+  },
   "dependencies": {
     "@polymer/iron-image": "^3.0.1",
     "@polymer/polymer": "^3.0.0"
