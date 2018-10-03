@@ -28,7 +28,7 @@ class ChopListUicItem extends PolymerElement {
             color: lightgrey;
         }
       </style>
-      <div class="item"  checked$="{{checked}}" on-click="toogleChecked"><slot></slot></div>
+      <div class="item"  checked$="{{checked}}"><slot></slot></div>
     `;
   }
 
@@ -40,7 +40,8 @@ class ChopListUicItem extends PolymerElement {
       },
     };
   }
-  ready () {
+
+  ready() {
     super.ready();
     this.addEventListener('click', this.toogleChecked);
   }
