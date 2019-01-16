@@ -2,6 +2,7 @@
   "name": "chop-list-uic-item",
   "description": "UI component for presenting a list item",
   "main": "chop-list-uic-item.js",
+  "version": "1.0.0",
   "scripts": {
     "test": "polymer test",
     "serve": "polymer serve"
